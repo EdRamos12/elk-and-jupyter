@@ -1,6 +1,7 @@
-/.cache
-/.ipy*
-/.jupyter
-/.local
-/.npm
+/src/**/.cache
+/src/**/.ipynb_checkpoints
+/src/**/.ipython
+/src/**/.jupyter
+/src/**/.local
+/src/**/.npm
 .env
