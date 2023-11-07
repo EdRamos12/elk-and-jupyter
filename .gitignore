@@ -1,0 +1,6 @@
+/.cache
+/.ipy*
+/.jupyter
+/.local
+/.npm
+.env
