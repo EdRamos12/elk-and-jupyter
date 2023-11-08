@@ -4,4 +4,7 @@
 /src/**/.jupyter
 /src/**/.local
 /src/**/.npm
+/src/**/.keras
+/src/**/.config
+/src/**/model
 .env

@@ -37,8 +37,8 @@ services:
       HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD:-}
       MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
       BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
-    networks:
-      - elk
+    # networks:
+    #   - elk
     depends_on:
       - elasticsearch
 
@@ -63,8 +63,8 @@ services:
       # Use single node discovery in order to disable production mode and avoid bootstrap checks.
       # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
-    networks:
-      - elk
+    # networks:
+    #   - elk
     restart: unless-stopped
 
   logstash:
@@ -83,8 +83,8 @@ services:
     environment:
       LS_JAVA_OPTS: -Xms256m -Xmx256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
-    networks:
-      - elk
+    # networks:
+    #   - elk
     depends_on:
       - elasticsearch
     restart: unless-stopped
@@ -101,15 +101,15 @@ services:
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
       ELASTICSEARCH_HOSTS: http://elk-and-jupyter-elasticsearch-1:9200
-    networks:
-      - elk
+    # networks:
+    #   - elk
     depends_on:
       - elasticsearch
     restart: unless-stopped
 
   jupyter:
     image: 
-      jupyter/minimal-notebook:latest
+      jupyter/tensorflow-notebook:latest
     ports:
       - 10000:8888
     environment:
@@ -118,8 +118,8 @@ services:
       - elasticsearch
     volumes:
       - ./src:/home/jovyan
-    networks:
-      - elk
+    # networks:
+    #   - elk
     restart: unless-stopped
 
 networks:
